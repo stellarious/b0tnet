@@ -314,7 +314,6 @@ class IRC(AdminMessageDispatcherMixin, ConfigMixin, BaseModule):
                             break
                         for line in self.process_data(data):
                             try:
-                                print(line)
                                 self.process_line(line)
                             except Exception as e:
                                 print(e)
