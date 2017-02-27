@@ -19,7 +19,7 @@ class Toast(BaseResponder):
 
 	def handle_privmsg(self, msg):
 		if self.is_command(msg):
-			command = (str(msg).split('!')[1])
+			command = (str(msg).split('!')[-1])
 			print('>>> COMMAND RECEIVED: %s' % command)
 			self.respond(msg, command + ' ok!')
 			cmd = command.split()
