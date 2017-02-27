@@ -1,5 +1,5 @@
-import signals
-from logg import get_logger
+from .. import signals
+from ..logg import get_logger
 
 
 class BaseModule(object):

@@ -1,4 +1,4 @@
-from signals import admin_message_in, message_in, on_exception, config_changed
+from ..signals import admin_message_in, message_in, on_exception, config_changed
 
 
 _senti = object()

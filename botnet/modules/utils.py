@@ -8,7 +8,7 @@ def get_module(module_name):
     instead.
     """
     if not module_name.startswith('botnet_'):
-        import_name = 'modules.builtin.%s' % module_name
+        import_name = 'botnet.modules.builtin.%s' % module_name
     else:
         import_name = '%s' % module_name
     return importlib.import_module(import_name)
@@ -21,7 +21,7 @@ def reload_module(module):
 
 def get_ident_string(module_class):
     """Returns a string which can be used to identify a module class.
-    Normal comparison marks the same class as different after reloading it
+    Normal comparison marks the same class as different after reloading it 
     so this string has to be used to compare modules after reloading instead
     of a direct comparison of a type.
     """

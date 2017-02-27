@@ -1,5 +1,5 @@
-from logg import get_logger
-from modules.utils import get_ident_string
+from .logg import get_logger
+from .modules.utils import get_ident_string
 
 
 class ModuleWrapper(object):

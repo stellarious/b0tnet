@@ -7,7 +7,7 @@
 import click
 import logging
 import signal
-from manager import Manager
+from botnet.manager import Manager
 
 # DEBUG = True
 DEBUG = False

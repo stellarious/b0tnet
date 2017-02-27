@@ -6,7 +6,7 @@
 """
 
 
-from codes import Code
+from .codes import Code
 
 
 def analyze_prefix(prefix):

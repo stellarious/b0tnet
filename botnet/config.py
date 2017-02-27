@@ -1,5 +1,5 @@
 import threading
-from helpers import load_json, save_json
+from .helpers import load_json, save_json
 
 
 class Config(dict):

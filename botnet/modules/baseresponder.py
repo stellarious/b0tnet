@@ -1,7 +1,7 @@
 import re
-from helpers import is_channel_name
-from message import Message
-from signals import message_out
+from ..helpers import is_channel_name
+from ..message import Message
+from ..signals import message_out
 from .base import BaseModule
 from .mixins import ConfigMixin, MessageDispatcherMixin
 from .lib import parse_command
@@ -9,7 +9,7 @@ from .lib import parse_command
 
 class BaseResponder(ConfigMixin, MessageDispatcherMixin, BaseModule):
     """Inherit from this class to quickly create a module which reacts to users'
-    messages.
+    messages. 
 
     Example module config:
 

@@ -3,9 +3,9 @@ import socket
 import ssl
 import threading
 import time
-from logg import get_logger
-from message import Message
-from signals import message_in, message_out, on_exception
+from ...logg import get_logger
+from ...message import Message
+from ...signals import message_in, message_out, on_exception
 from .. import BaseModule
 from ..lib import parse_command
 from ..mixins import AdminMessageDispatcherMixin, ConfigMixin
@@ -314,6 +314,7 @@ class IRC(AdminMessageDispatcherMixin, ConfigMixin, BaseModule):
                             break
                         for line in self.process_data(data):
                             try:
+                                print(line)
                                 self.process_line(line)
                             except Exception as e:
                                 print(e)
