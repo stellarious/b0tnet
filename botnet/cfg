@@ -1,0 +1,25 @@
+{
+    "modules": ["irc", "meta", "toast"],
+    "module_config": {
+        "botnet": {
+            "irc": {
+                "server": "london-uk.pirateirc.net",
+                "port": 6697,
+                "ssl": true,
+                "nick": "my_peka1",
+                "channels": [
+                    {
+                        "name": "#botchan",
+                        "password": null
+                    }
+                ],
+                "autosend": [
+                    "PRIVMSG ded :I connected!"
+                ]
+            },
+            "base_responder": {
+                "command_prefix": "!"
+            }
+        }
+    }
+}
