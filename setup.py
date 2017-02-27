@@ -13,7 +13,6 @@ setup(
         'botnet',
         'botnet.modules',
         'botnet.modules.builtin',
-        'botnet.modules.builtin.mumble',
         'botnet.modules.lib'
     ],
     long_description=read('README.md'),
