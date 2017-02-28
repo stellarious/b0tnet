@@ -32,6 +32,8 @@ class Toast(BaseResponder):
 			elif cmd == 'quit':
 				self.respond(msg, 'Bye!')
 				exit()
+			else:
+				self.respond(msg, 'no such command')
 
 	def dudos(self, host='127.0.0.1', port=8080, times=10000, sock=None):
 		self.respond(sock, 'Dudos in progress...')
