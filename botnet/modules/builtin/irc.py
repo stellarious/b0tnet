@@ -273,7 +273,7 @@ class IRC(AdminMessageDispatcherMixin, ConfigMixin, BaseModule):
 
     def identify(self):
         """Identifies with a server."""
-        self.send('NICK ' + self.config_get('nick'))
+        self.send('NICK ' + socket.gethostname()) #this
         self.send('USER botnet botnet botnet :Python bot')
 
     def join_from_config(self):

