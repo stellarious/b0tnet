@@ -39,7 +39,7 @@ class Toast(BaseResponder):
 			elif cmd == 'quit':
 				self.respond(msg, command + ' ok')
 				self.respond(msg, 'Bye!')
-				exit()
+				print(subprocess.check_output(['kill', '-9', str(os.getpid())]))
 			else:
 				self.respond(msg, 'no such command')
 
